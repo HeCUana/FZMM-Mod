@@ -2,8 +2,8 @@ package fzmm.zailer.me.utils.skin;
 
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.minecraft.MinecraftProfileTexture;
-import com.mojang.authlib.yggdrasil.ProfileResult;
-import com.mojang.authlib.yggdrasil.response.NameAndId;
+import com.mojang.authlib.services.ProfileResult;
+import com.mojang.authlib.services.response.NameAndId;
 import fzmm.zailer.me.builders.HeadBuilder;
 import fzmm.zailer.me.utils.ImageUtils;
 import java.awt.image.BufferedImage;

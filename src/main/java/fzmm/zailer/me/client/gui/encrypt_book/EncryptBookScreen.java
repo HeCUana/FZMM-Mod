@@ -37,6 +37,7 @@ import org.jetbrains.annotations.Nullable;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -230,7 +231,7 @@ public class EncryptBookScreen extends BaseFzmmScreen implements IMemento {
 
     private void faqExecute(Button buttonWidget) {
         assert this.minecraft.gui.screen() != null;
-        ConfirmLinkScreen.confirmLinkNow(this.minecraft.gui.screen(), FzmmWikiConstants.ENCRYPT_BOOK_WIKI_LINK, true);
+        ConfirmLinkScreen.confirmLinkNow(this.minecraft.gui.screen(), URI.create(FzmmWikiConstants.ENCRYPT_BOOK_WIKI_LINK), true);
     }
 
     public static List<TranslationEncryptProfile> getProfiles() {

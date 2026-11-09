@@ -30,7 +30,6 @@ import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.packs.PackType;
-import org.lwjgl.glfw.GLFW;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -41,7 +40,7 @@ public class FzmmClient implements ClientModInitializer {
     public static final Logger LOGGER = LoggerFactory.getLogger("FZMM");
     public static final FzmmConfig CONFIG = FzmmConfig.createAndLoad();
     public static final KeyMapping.Category KEY_CATEGORY = KeyMapping.Category.register(Identifier.fromNamespaceAndPath(MOD_ID, "general"));
-    public static final KeyMapping OPEN_MAIN_GUI_KEYBINDING = KeyMappingHelper.registerKeyMapping(new KeyMapping("key.fzmm.mainGui", InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_Z, KEY_CATEGORY));
+    public static final KeyMapping OPEN_MAIN_GUI_KEYBINDING = KeyMappingHelper.registerKeyMapping(new KeyMapping("key.fzmm.mainGui", InputConstants.Type.KEYBOARD, InputConstants.KEY_Z, KEY_CATEGORY));
     public static final int CHAT_BASE_COLOR = 0x478e47;
     public static final int CHAT_WHITE_COLOR = 0xb7b7b7;
     public static final Identifier CUSTOM_HEAD_ENTITY = Identifier.fromNamespaceAndPath(FzmmClient.MOD_ID, "custom_head");

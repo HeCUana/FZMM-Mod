@@ -22,7 +22,7 @@ import net.minecraft.client.input.MouseButtonEvent;
 import net.minecraft.client.input.MouseButtonInfo;
 import net.minecraft.network.chat.Style;
 import org.jetbrains.annotations.Nullable;
-import org.lwjgl.glfw.GLFW;
+import com.mojang.blaze3d.platform.InputConstants;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -336,7 +336,7 @@ public class SuggestionTextBox extends FontTextBoxComponent {
                 UIComponent selectedComponent = children.get(this.selectedSuggestionIndex);
                 // this should be a custom component because onKeyPress can't be called
                 // in a context menu since it doesn't have a focusHandler
-                selectedComponent.onMouseDown(new MouseButtonEvent(selectedComponent.x(), selectedComponent.y(), new MouseButtonInfo(GLFW.GLFW_MOUSE_BUTTON_1, 0)), false);
+                selectedComponent.onMouseDown(new MouseButtonEvent(selectedComponent.x(), selectedComponent.y(), new MouseButtonInfo(InputConstants.MOUSE_BUTTON_LEFT, 0)), false);
                 this.disableCallback = false;
                 return true;
             }

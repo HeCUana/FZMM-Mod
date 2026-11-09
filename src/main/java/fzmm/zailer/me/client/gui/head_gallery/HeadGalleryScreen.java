@@ -35,11 +35,12 @@ import net.minecraft.network.chat.Style;
 import net.minecraft.world.entity.player.PlayerSkin;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
-import org.lwjgl.glfw.GLFW;
+import com.mojang.blaze3d.platform.InputConstants;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.URI;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -152,7 +153,7 @@ public class HeadGalleryScreen extends BaseFzmmScreen implements IMemento {
 
         EntityComponent<CustomHeadEntity> backEntityPreview = EComponents.entity(Sizing.fixed(48), this.backEntityPreview)
                 .allowMouseRotation(true);
-        backEntityPreview.onMouseDrag(new MouseButtonEvent(0, 0, new MouseButtonInfo(GLFW.GLFW_MOUSE_BUTTON_LEFT, 0)), 160, 0);
+        backEntityPreview.onMouseDrag(new MouseButtonEvent(0, 0, new MouseButtonInfo(InputConstants.MOUSE_BUTTON_LEFT, 0)), 160, 0);
         backEntityPreview.allowMouseRotation(false);
 
         previewLayout.child(EComponents.entity(Sizing.fixed(48), this.frontEntityPreview));
@@ -417,7 +418,7 @@ public class HeadGalleryScreen extends BaseFzmmScreen implements IMemento {
 
     private void minecraftHeadsExecute(ButtonComponent button) {
         assert this.minecraft.gui.screen() != null;
-        ConfirmLinkScreen.confirmLinkNow(this.minecraft.gui.screen(), HeadGalleryResources.MINECRAFT_HEADS_URL, true);
+        ConfirmLinkScreen.confirmLinkNow(this.minecraft.gui.screen(), URI.create(HeadGalleryResources.MINECRAFT_HEADS_URL), true);
     }
 
     private net.minecraft.network.chat.Component getTagButtonText() {

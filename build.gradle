@@ -11,6 +11,8 @@ base {
 }
 
 repositories {
+    // locally built owo-lib 0.13.1+26.3 (upstream maven has no 26.3 build yet)
+    maven { url = projectDir.toPath().resolve("local-maven").toUri(); name = "LocalOwo" }
     maven { url = "https://maven.terraformersmc.com/releases/"; name = "TerraformersMC" } // modmenu
     maven { url = "https://maven.wispforest.io"; name = "Wispforest" } // owo-lib
     maven { url = "https://jitpack.io"; name = "JitPack" } // owo-lib
@@ -20,6 +22,29 @@ repositories {
 
 loom {
     accessWidenerPath = file("src/main/resources/fzmm.accesswidener")
+
+    runs {
+        client {
+            client()
+            ideConfigGenerated true
+            name = "Client"
+        }
+        server {
+            server()
+            ideConfigGenerated true
+            name = "Server"
+        }
+        // Joins the local test server directly through quickPlay, so that the client login
+        // packet (and therefore the registration of the client commands) is actually exercised.
+        // NOTE: MC 26.3 renamed the quickPlay options: --quickPlay became --quickPlayMultiplayer.
+        clientAuto {
+            client()
+            ideConfigGenerated false
+            name = "Client (auto-join)"
+            programArg "--quickPlayMultiplayer"
+            programArg "127.0.0.1:25565"
+        }
+    }
 }
 
 dependencies {
@@ -62,6 +87,13 @@ dependencies {
     // Symbol chat
     implementation "maven.modrinth:symbol-chat:${project.symbol_chat_version}"
     implementation "maven.modrinth:reconfigure:${project.symbol_chat_reconfigure_version}"
+
+    // Native file dialogs. MC 26.3 no longer ships lwjgl-tinyfd in its library list,
+    // so the jar and the platform natives have to be brought in explicitly.
+    implementation "org.lwjgl:lwjgl-tinyfd:${project.lwjgl_version}"
+    runtimeOnly "org.lwjgl:lwjgl-tinyfd:${project.lwjgl_version}:natives-windows"
+    runtimeOnly "org.lwjgl:lwjgl-tinyfd:${project.lwjgl_version}:natives-linux"
+    runtimeOnly "org.lwjgl:lwjgl-tinyfd:${project.lwjgl_version}:natives-macos"
 
     // Test dependencies (disabled because it needs support for Java 25)
 //    testImplementation "net.fabricmc:fabric-loader-junit:${project.loader_version}"

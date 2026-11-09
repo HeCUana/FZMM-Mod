@@ -1,10 +1,10 @@
 package fzmm.zailer.me.utils.history;
 
+import com.mojang.blaze3d.platform.InputConstants;
 import fzmm.zailer.me.client.gui.components.extend.component.EButtonComponent;
 import io.wispforest.owo.util.Observable;
 import net.minecraft.client.input.KeyEvent;
 import net.minecraft.network.chat.Component;
-import org.lwjgl.glfw.GLFW;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
@@ -51,9 +51,9 @@ public class HistoryClipboard {
     public boolean keyPressed(KeyEvent input) {
         if (!input.hasControlDown()) return false;
 
-        if (input.key() == GLFW.GLFW_KEY_Z && !input.hasShiftDown()) return this.undo();
+        if (input.key() == InputConstants.KEY_Z && !input.hasShiftDown()) return this.undo();
 
-        if ((input.key() == GLFW.GLFW_KEY_Z && input.hasShiftDown()) || input.key() == GLFW.GLFW_KEY_Y) return this.redo();
+        if ((input.key() == InputConstants.KEY_Z && input.hasShiftDown()) || input.key() == InputConstants.KEY_Y) return this.redo();
 
         return false;
     }

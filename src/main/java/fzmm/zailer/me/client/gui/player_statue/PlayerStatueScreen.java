@@ -30,6 +30,7 @@ import org.jetbrains.annotations.Nullable;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.URI;
 import java.util.List;
 
 @SuppressWarnings("UnstableApiUsage")
@@ -85,7 +86,7 @@ public class PlayerStatueScreen extends BaseFzmmScreen implements IMemento {
 
     private void faqExecute(Button buttonWidget) {
         assert this.minecraft.gui.screen() != null;
-        ConfirmLinkScreen.confirmLinkNow(this.minecraft.gui.screen(), FzmmWikiConstants.PLAYER_STATUE_WIKI_LINK, true);
+        ConfirmLinkScreen.confirmLinkNow(this.minecraft.gui.screen(), URI.create(FzmmWikiConstants.PLAYER_STATUE_WIKI_LINK), true);
     }
 
     private void execute(Button buttonWidget) {

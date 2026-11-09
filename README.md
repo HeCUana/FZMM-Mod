@@ -1,5 +1,19 @@
 # FZMM-Mod
 
+## Minecraft version support
+
+| Branch | Minecraft | Mod version |
+|---|---|---|
+| `dev` (this branch) | **26.3** | `0.2.21-beta.1` |
+| upstream `dev` | 26.2 | `0.2.20` |
+
+This branch is the **26.3 port**. The porting notes, the full list of API
+breakages and the verification tooling are documented in
+[UPGRADE_26_3.md](./UPGRADE_26_3.md).
+
+> The build needs **owo-lib `0.13.1+26.3`**, which is not on the upstream maven
+> yet. A locally built copy is served from `local-maven/` (see UPGRADE_26_3.md §2).
+
 
 <div style="margin: 0 auto; width: 50%;">
 

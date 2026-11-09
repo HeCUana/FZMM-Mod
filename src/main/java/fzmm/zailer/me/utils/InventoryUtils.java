@@ -14,7 +14,7 @@ public class InventoryUtils {
     public static List<ItemStack> getItemsFromContainer(ItemStack container) {
         ItemContainerContents result = container.getOrDefault(DataComponents.CONTAINER, ItemContainerContents.fromItems(new ArrayList<>()));
 
-        return result.allItemsCopyStream().toList();
+        return result.nonEmptyItemCopyStream().toList();
     }
 
     public static long getSizeInBytes(List<ItemStack> stacks) {

@@ -116,3 +116,15 @@ run/
 
 # Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
 !gradle-wrapper.jar
+
+# Locally built owo-lib 0.13.1+26.3 (upstream maven has no 26.3 build yet).
+# This is a build dependency, not source: it must not be committed.
+local-maven/
+
+# Upgrade / build helper scripts output
+run-shots/
+*.out.log
+*.err.log
+
+# Local helper input for tools/push_via_api.py (reads the credential manager)
+cred-in.txt

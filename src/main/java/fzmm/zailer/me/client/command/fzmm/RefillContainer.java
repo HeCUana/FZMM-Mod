@@ -51,7 +51,7 @@ public class RefillContainer implements ISubCommand {
         ItemStack itemStack = ItemUtils.from(InteractionHand.OFF_HAND);
 
         containerStack.update(DataComponents.CONTAINER, ItemContainerContents.EMPTY, component -> {
-            List<ItemStack> stacksCopy = new ArrayList<>(component.allItemsCopyStream().toList());
+            List<ItemStack> stacksCopy = new ArrayList<>(component.nonEmptyItemCopyStream().toList());
 
             if (firstSlot == -1) {
                 this.fullContainerEmptySlots(stacksCopy, itemStack, slotsToFill);

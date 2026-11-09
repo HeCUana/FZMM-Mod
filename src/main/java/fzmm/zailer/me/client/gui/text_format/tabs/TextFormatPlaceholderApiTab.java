@@ -12,6 +12,7 @@ import io.wispforest.owo.ui.core.UIComponent;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.ConfirmLinkScreen;
 import net.minecraft.world.item.Items;
+import java.net.URI;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +39,7 @@ public class TextFormatPlaceholderApiTab implements ITextFormatTab {
 
         UIComponent wikiInfo = UIComponents.button(net.minecraft.network.chat.Component.translatable("fzmm.gui.textFormat.button.placeholderApiWiki"), buttonComponent -> {
             assert Minecraft.getInstance().gui.screen() != null;
-            ConfirmLinkScreen.confirmLinkNow(Minecraft.getInstance().gui.screen(), PLACEHOLDER_WIKI, true);
+            ConfirmLinkScreen.confirmLinkNow(Minecraft.getInstance().gui.screen(), URI.create(PLACEHOLDER_WIKI), true);
         });
         this.infoLayout.child(wikiInfo);
 

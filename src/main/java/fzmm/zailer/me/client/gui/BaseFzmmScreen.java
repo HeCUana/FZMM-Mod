@@ -34,7 +34,7 @@ import net.minecraft.client.input.KeyEvent;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
-import org.lwjgl.glfw.GLFW;
+import com.mojang.blaze3d.platform.InputConstants;
 import org.w3c.dom.Element;
 
 import java.util.Optional;
@@ -133,7 +133,7 @@ public abstract class BaseFzmmScreen extends BaseUIModelScreen<EFlowLayout> impl
 
     @Override
     public boolean keyPressed(KeyEvent input) {
-        if (input.key() == GLFW.GLFW_KEY_ESCAPE) {
+        if (input.key() == InputConstants.KEY_ESCAPE) {
             if (this.symbolChatCompat.symbol().isMounted()) {
                 this.symbolChatCompat.symbol().remove();
                 this.symbolChatCompat.selectedComponent(null);

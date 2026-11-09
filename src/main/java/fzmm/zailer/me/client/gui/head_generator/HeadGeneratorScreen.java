@@ -42,6 +42,7 @@ import net.minecraft.client.gui.screens.ConfirmLinkScreen;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
+import com.mojang.blaze3d.Blaze3D;
 import net.minecraft.util.Util;
 import org.jetbrains.annotations.Nullable;
 
@@ -50,6 +51,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.URI;
 import java.nio.file.Path;
 import java.util.*;
 import java.util.List;
@@ -118,7 +120,7 @@ public class HeadGeneratorScreen extends BaseFzmmScreen implements IMemento {
 
         //bottom buttons
         ButtonComponent openSkinFolderButton = rootComponent.childByIdOrThrow(ButtonComponent.class, "open-folder-button");
-        openSkinFolderButton.onPress(button -> Util.getPlatform().openFile(SKIN_SAVE_FOLDER_PATH.toFile()));
+        openSkinFolderButton.onPress(button -> Blaze3D.openPath(SKIN_SAVE_FOLDER_PATH));
 
         // nav var
         this.searchField = TextBoxRow.setup(rootComponent, "search", "", 128, s -> this.applyFilters());
@@ -584,7 +586,7 @@ public class HeadGeneratorScreen extends BaseFzmmScreen implements IMemento {
 
     private void wikiExecute() {
         assert this.minecraft.gui.screen() != null;
-        ConfirmLinkScreen.confirmLinkNow(this.minecraft.gui.screen(), FzmmWikiConstants.HEAD_GENERATOR_WIKI_LINK, true);
+        ConfirmLinkScreen.confirmLinkNow(this.minecraft.gui.screen(), URI.create(FzmmWikiConstants.HEAD_GENERATOR_WIKI_LINK), true);
     }
 
     public SkinPreEditOption skinPreEdit() {

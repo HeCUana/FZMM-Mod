@@ -39,6 +39,7 @@ import io.wispforest.owo.ui.container.FlowLayout;
 import io.wispforest.owo.ui.core.*;
 import net.minecraft.client.Screenshot;
 import net.minecraft.network.chat.Component;
+import com.mojang.blaze3d.Blaze3D;
 import net.minecraft.util.Util;
 import net.minecraft.world.entity.LivingEntity;
 import org.jetbrains.annotations.Nullable;
@@ -148,9 +149,9 @@ public class HeadComponentOverlay extends EFlowLayout {
             builder.backgroundColor(EStyles.ALERT_SUCCESS_COLOR)
                     .title(Component.translatable("fzmm.gui.headGenerator.snack_bar.saveSkin.saved"))
                     .button(iSnackBarComponent -> UIComponents.button(Component.translatable("fzmm.gui.headGenerator.snack_bar.saveSkin.button.openFolder"), buttonComponent ->
-                            Util.getPlatform().openFile(HeadGeneratorScreen.SKIN_SAVE_FOLDER_PATH.toFile())))
+                            Blaze3D.openPath(HeadGeneratorScreen.SKIN_SAVE_FOLDER_PATH)))
                     .button(iSnackBarComponent -> UIComponents.button(Component.translatable("fzmm.gui.headGenerator.snack_bar.saveSkin.button.openSkin"), buttonComponent ->
-                            Util.getPlatform().openFile(file)))
+                            Blaze3D.openPath(file.toPath())))
                     .sizing(Sizing.fixed(180), Sizing.content())
                     .mediumTimer();
         } catch (IOException e) {
